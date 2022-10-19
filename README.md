@@ -1,6 +1,14 @@
 # MySQL Examples with K8s
 Practicing setting up mysql services
 
+## Deploy
+```
+cd dp-with-nodeport
+# or
+cd statefulset
+kubectl apply -f .
+```
+
 ## Secrets
 Recommend using HashiCorp Vault or see also [here](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/).
 
