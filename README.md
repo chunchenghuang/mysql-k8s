@@ -2,10 +2,8 @@
 Practicing setting up mysql services
 
 ## Deploy
+`cd` to dp-with-nodeport or statefulset directory
 ```
-cd dp-with-nodeport
-# or
-cd statefulset
 kubectl apply -f .
 ```
 
