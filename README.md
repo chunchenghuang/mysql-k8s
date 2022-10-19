@@ -15,8 +15,9 @@ Resources include:
 **Run mysql-client**
 ```
 kubectl run -it --rm --image=mysql:8.0 --restart=Never mysql-client -- mysql -p -h mysql-service.mysql.svc.cluster.local
-
-# then enter your password
+```
+Then enter your password
+```
 # sql commands
 create database justfortest;
 exit;
@@ -41,6 +42,7 @@ kubectl run -it --rm --restart=Never dnsutils2 --image=tutum/dnsutils --command 
 
 # inside the bash
 nslookup mysql-service.mysql
+```
 Server:         10.96.0.10
 Address:        10.96.0.10#53
 
@@ -50,22 +52,24 @@ Name:   mysql-service.mysql.svc.cluster.local
 Address: 172.17.0.4
 Name:   mysql-service.mysql.svc.cluster.local
 Address: 172.17.0.5
-
+```
 # then nslookup your address endpoint
 nslookup 172.17.0.3
+```
 Server:         10.96.0.10
 Address:        10.96.0.10#53
 
 3.0.17.172.in-addr.arpa name = mysql-0.mysql-service.mysql.svc.cluster.local.
 
-# you get your FQDN mysql-0.mysql-service.mysql.svc.cluster.local
+You get your FQDN `mysql-0.mysql-service.mysql.svc.cluster.local`
 ```
 
 **Run mysql-client**
 ```
 kubectl run -it --rm --image=mysql:8.0 --restart=Never mysql-client -- mysql -p -h mysql-0.mysql-service.mysql.svc.cluster.local
-
-# then enter your password
+```
+Then enter your password
+```
 # sql commands
 create database justfortest;
 exit;
