@@ -34,7 +34,7 @@ Resources include:
 - Persistent Volume Claim
 - Storage Class
 
-**check the dns resolution of statefulset pods**
+**Check the dns resolution of statefulset pods**
 ```
 # go inside any pod
 kubectl run -it --rm --restart=Never dnsutils2 --image=tutum/dnsutils --command -- bash
