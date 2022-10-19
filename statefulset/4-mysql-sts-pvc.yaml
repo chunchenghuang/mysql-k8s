@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+  namespace: mysql
+spec:
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-password
+                key: MYSQL_ROOT_PASSWORD
+        name: mysql
+        image: mysql:8.0
+        ports:
+        - containerPort: 3306
+          name: mysql
+        # specify mount point
+        volumeMounts:
+          - mountPath: /var/lib/mysql
+            name: mysql-pv-claim
+        # only specify volume Mounts with no volume claim as volumeClaimTemplates will be used
+        # 
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mysql
+  # set your headless service name
+  # and it automatically sets the hostname and subdomain name for you
+  serviceName: mysql-service
+  # set for the statefulset to not follow ordered launch
+  podManagementPolicy: Parallel
+# PVC template for creating automatically
+  volumeClaimTemplates:
+  - metadata:
+      name: mysql-pv-claim
+      namespace: mysql
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      storageClassName: mysql-storage
+      resources:
+        requests:
+          storage: 1Gi
