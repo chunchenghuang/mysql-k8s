@@ -62,7 +62,6 @@ Address:        10.96.0.10#53
 3.0.17.172.in-addr.arpa name = mysql-0.mysql-service.mysql.svc.cluster.local.
 
 You get your FQDN `mysql-0.mysql-service.mysql.svc.cluster.local`
-```
 
 **Run mysql-client**
 ```
